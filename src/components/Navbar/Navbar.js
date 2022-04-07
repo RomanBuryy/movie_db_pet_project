@@ -25,9 +25,7 @@ const useStyles = makeStyles((theme) => ({
             flexDirection: "column"
         }
     },
-    menuItem: {
-        marginRight: theme.spacing(40)
-    }
+
 }));
 
 const Navbar = () => {
@@ -36,27 +34,27 @@ const Navbar = () => {
 
     return (
         <>
-            <AppBar position="static">
+            <AppBar position="fixed">
                 <Toolbar className={classes.toolbar}>
+
                     <Typography variant={"h4"}>
                         Netflik
                     </Typography>
 
                     <div className={classes.menu}>
-                        <MenuItem className={classes.menuItem}>
+                        <MenuItem>
                             <Link className={classes.link} to={'/'}>Movies</Link>
                         </MenuItem>
                         <MenuItem>
                             <Link className={classes.link} to={'genres'}>Genres</Link>
                         </MenuItem>
                     </div>
+
                     <AccountCircleIcon/>
+
                 </Toolbar>
             </AppBar>
-            <Outlet/>
         </>
-
-
     );
 };
 
