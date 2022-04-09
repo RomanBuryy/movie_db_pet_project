@@ -7,13 +7,40 @@ export const getAllMovies = createAsyncThunk(
     'moviesSlice/getAllMovies',
     async (_, {rejectWithValue}) => {
         try {
-            const movies = await movieService.getAll();
-            return movies
+            return await movieService.getAll();
+
         } catch (e) {
-            console.log(e.message)
+            return rejectWithValue(e.message);
         }
     }
 )
+
+
+
+
+export const getMovieDetails = createAsyncThunk(
+    'moviesSlice/getMovieDetails',
+    async(id,{rejectWithValue}) =>{
+        try {
+            return await movieService.getById(id);
+        }catch (e) {
+            return rejectWithValue(e.message);
+        }
+    }
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 const moviesSlice = createSlice({
@@ -26,16 +53,20 @@ const moviesSlice = createSlice({
     },
     reducers: {},
     extraReducers: {
-        [getAllMovies.pending]: (state, action)=>{
+        [getAllMovies.pending]: (state, action) => {
             state.status = 'loading'
             state.error = null
         },
-        [getAllMovies.fulfilled]: (state, action)=>{
+        [getAllMovies.fulfilled]: (state, action) => {
             state.status = 'fulfilled'
             state.movies = action.payload
         },
-        [getAllMovies.rejected]: (state, action)=>{
+        [getAllMovies.rejected]: (state, action) => {
 
+        },
+        [getMovieDetails.fulfilled]: (state, action) => {
+            state.singleMovie = action.payload
+            console.log(action.payload)
         },
     }
 });

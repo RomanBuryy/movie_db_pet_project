@@ -6,7 +6,6 @@ const store = configureStore({
     reducer:{
         moviesReducer
     },
-
 });
 
 export default store
