@@ -29,11 +29,13 @@ const SingleMoviePage = () => {
         dispatch(getMovieDetails(params.id));
     }, [dispatch, params]);
 
+    console.log(singleMovie.genres)
     return (
         <Container className={classes.container}>
 
-            {singleMovie.overview}
-            {singleMovie.genres.map(genresPage => genresPage.name)}
+            {singleMovie && singleMovie.overview}
+            {singleMovie && singleMovie.genres.map((genre) => genre.name)}
+
         </Container>
     );
 };
