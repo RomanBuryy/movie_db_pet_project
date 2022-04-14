@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import {makeStyles} from "@mui/styles";
+import {Card, CardContent, CardMedia, Container, Rating, Typography} from "@mui/material";
 
 import {getMovieDetails} from "../../store";
-import {makeStyles} from "@mui/styles";
-import {Box, Button, Card, CardActions, CardContent, CardMedia, Container, Rating, Typography} from "@mui/material";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -14,18 +14,27 @@ const useStyles = makeStyles((theme) => ({
             paddingTop: theme.spacing(15)
         }
     },
-    genres:{
+    card:{
         display: "flex",
-        alignItems: "center"
+
+        background: "linear-gradient(135deg, #00d2ff, #3a7bd5)",
+        boxShadow: 2,
+        [theme.breakpoints.down("md")]: {
+            flexDirection: "column"
+        }
     },
-    genres_item:{
-        backgroundColor:"#F7AD19",
+    genres: {
+        display: "flex",
+        alignItems: "center",
+        marginTop:"12px"
+
+    },
+    genres_item: {
+        backgroundColor: "#FFEB3B",
         borderRadius: 4,
-        padding:"4px 8px"
-
+        padding: "4px 8px",
+        marginRight: "12px"
     }
-
-
 }))
 
 const SingleMoviePage = () => {
@@ -39,36 +48,30 @@ const SingleMoviePage = () => {
         dispatch(getMovieDetails(params.id));
     }, [dispatch, params]);
 
-    console.log(singleMovie.genres)
     return (
         <Container className={classes.container}>
-
-            <Card sx={{display: "flex",height: 600, background: "linear-gradient(135deg, #00d2ff, #3a7bd5)", boxShadow: 2}}>
-                <CardMedia sx={{width: 400}}
+            <Card className={classes.card}>
+                <CardMedia
                            component="img"
                            image={`https://image.tmdb.org/t/p/w400/${singleMovie.poster_path}`}
                 />
                 <CardContent>
-                    <Typography variant="h4" component="div" sx={{color: "#E3F9FF" }}>
+                    <Typography variant="h4" component="div" sx={{color: "#E3F9FF"}}>
                         {singleMovie.title}
                     </Typography>
-                    <Rating name="read-only" value={singleMovie.vote_average} max={10} precision={0.5} size="small"
+                    <Rating sx={{ marginTop:"8px"}} name="read-only" value={singleMovie.vote_average} max={10} precision={0.5} size="small"
                             readOnly/>
                     <div className={classes.genres}>
-
-                        {singleMovie && singleMovie.genres.map((genre) => {
-                            return <Typography className={classes.genres_item} variant={"body2"}  mr={2}>{genre.name}</Typography>
+                        {singleMovie.genres && singleMovie.genres.map((genre) => {
+                            return <div key={genre.name} className={classes.genres_item}><Typography
+                                variant={"body2"}>{genre.name}</Typography></div>
                         })}
-
-
                     </div>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body1" component="div" sx={{color: "#fff", marginTop: "36px", fontWeight:300}}>
                         {singleMovie.overview}
                     </Typography>
                 </CardContent>
-
             </Card>
-
         </Container>
     );
 };
