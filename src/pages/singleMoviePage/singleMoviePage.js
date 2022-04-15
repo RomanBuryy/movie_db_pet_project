@@ -12,11 +12,11 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: theme.spacing(10),
         [theme.breakpoints.down("sm")]: {
             paddingTop: theme.spacing(15)
+
         }
     },
     card:{
         display: "flex",
-
         background: "linear-gradient(135deg, #00d2ff, #3a7bd5)",
         boxShadow: 2,
         [theme.breakpoints.down("md")]: {
@@ -59,7 +59,7 @@ const SingleMoviePage = () => {
                     <Typography variant="h4" component="div" sx={{color: "#E3F9FF"}}>
                         {singleMovie.title}
                     </Typography>
-                    <Rating sx={{ marginTop:"8px"}} name="read-only" value={singleMovie.vote_average} max={10} precision={0.5} size="small"
+                    <Rating sx={{ marginTop:"8px"}} name="read-only" value={singleMovie.vote_average ?? 0} max={10} precision={0.5} size="small"
                             readOnly/>
                     <div className={classes.genres}>
                         {singleMovie.genres && singleMovie.genres.map((genre) => {

@@ -2,7 +2,6 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 import {movieService} from "../../services/movie.service";
 
-
 export const getAllMovies = createAsyncThunk(
     'moviesSlice/getAllMovies',
     async (_, {rejectWithValue}) => {
@@ -16,8 +15,6 @@ export const getAllMovies = createAsyncThunk(
 )
 
 
-
-
 export const getMovieDetails = createAsyncThunk(
     'moviesSlice/getMovieDetails',
     async(id,{rejectWithValue}) =>{
@@ -29,18 +26,17 @@ export const getMovieDetails = createAsyncThunk(
     }
 )
 
+export const getAllGenres = createAsyncThunk(
+    'moviesSlice/getAllGenres',
+    async (_, {rejectWithValue}) => {
+        try {
+            return await movieService.getAllGenres();
 
-
-
-
-
-
-
-
-
-
-
-
+        } catch (e) {
+            return rejectWithValue(e.message);
+        }
+    }
+)
 
 
 const moviesSlice = createSlice({
@@ -48,6 +44,7 @@ const moviesSlice = createSlice({
     initialState: {
         movies: [],
         singleMovie: [],
+        genresList: [],
         status: null,
         error: null
     },
@@ -62,15 +59,21 @@ const moviesSlice = createSlice({
             state.movies = action.payload
         },
         [getAllMovies.rejected]: (state, action) => {
-
+            // add error handlers
         },
         [getMovieDetails.fulfilled]: (state, action) => {
             state.singleMovie = action.payload
             console.log(action.payload)
         },
+
+        [getAllGenres.fulfilled]: (state, action) =>{
+            state.genresList = action.payload
+        }
+
+
+
     }
 });
 
 const moviesReducer = moviesSlice.reducer;
-
 export default moviesReducer;

@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
             paddingTop: theme.spacing(15)
         }
     }
-}))
+}));
 
 const MoviesPage = () => {
     const classes = useStyles();
