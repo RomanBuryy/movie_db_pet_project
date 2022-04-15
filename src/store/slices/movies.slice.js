@@ -14,7 +14,6 @@ export const getAllMovies = createAsyncThunk(
     }
 )
 
-
 export const getMovieDetails = createAsyncThunk(
     'moviesSlice/getMovieDetails',
     async(id,{rejectWithValue}) =>{
@@ -37,7 +36,6 @@ export const getAllGenres = createAsyncThunk(
         }
     }
 )
-
 
 const moviesSlice = createSlice({
     name: 'moviesSlice',
@@ -69,9 +67,6 @@ const moviesSlice = createSlice({
         [getAllGenres.fulfilled]: (state, action) =>{
             state.genresList = action.payload
         }
-
-
-
     }
 });
 

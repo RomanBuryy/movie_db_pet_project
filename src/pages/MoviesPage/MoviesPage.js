@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
 import {Container, Grid} from "@mui/material";
 import {makeStyles} from "@mui/styles";
-import Movie from "../../components/Movie/Movie";
 import {useDispatch, useSelector} from "react-redux";
+
+import Movie from "../../components/Movie/Movie";
 import {getAllMovies} from "../../store";
 
 

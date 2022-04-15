@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
 import {Grid} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllGenres} from "../../store";
 import {makeStyles} from "@mui/styles";
+
+import {getAllGenres} from "../../store";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +25,6 @@ const GenresPage = () => {
         dispatch(getAllGenres());
     }, [dispatch])
 
-    console.log(genresList.genres)
     return (
         <Grid container className={classes.container}>
             {genresList.genres && genresList.genres.map(value=> <div> {value.name}</div>)}
