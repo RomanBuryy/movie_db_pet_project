@@ -2,8 +2,11 @@ import {Route, Routes, Navigate} from 'react-router-dom'
 
 import MoviesPage from "./pages/MoviesPage/MoviesPage";
 import Layout from "./pages/Layout/Layout";
-import GenresPage from "./pages/GenresPage/GenresPage";
+import GenresListPage from "./pages/GenresListPage/GenresListPage";
 import SingleMoviePage from "./pages/singleMoviePage/singleMoviePage";
+
+
+import CurrentGenreMoviesList from "./pages/CurrentGenreMoviesList/CurrentGenreMoviesList";
 
 function App() {
 
@@ -14,7 +17,9 @@ function App() {
                    <Route index element={<Navigate to={'movies'}/>} />
                    <Route path={'movies'} element={<MoviesPage/>} />
                    <Route path={'/movies/:id'} element={<SingleMoviePage/>} />
-                   <Route path={'genres'} element={<GenresPage/>} />
+                   <Route path={'genres'} element={<GenresListPage/>}>
+                       <Route path={':id'} element={<CurrentGenreMoviesList/>} />
+                   </Route>
                </Route>
            </Routes>
         </>

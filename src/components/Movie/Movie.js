@@ -1,9 +1,8 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import {
-    Button,
     Card,
     CardActionArea,
-    CardActions,
     CardContent,
     CardMedia,
     Grid,
@@ -11,7 +10,7 @@ import {
     Typography
 } from "@mui/material";
 import {makeStyles} from "@mui/styles";
-import {Link, NavLink, useParams} from "react-router-dom";
+
 
 const useStyles = makeStyles(() => ({
     cardLink: {
@@ -37,7 +36,7 @@ const Movie = ({movie}) => {
                         component="img"
                         height="450"
                         image={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
-                        alt="green iguana"
+                        alt={movie.name}
                     />
                     <CardContent>
                         <Rating name="read-only" value={movie.vote_average} max={10} precision={0.5} size="small"

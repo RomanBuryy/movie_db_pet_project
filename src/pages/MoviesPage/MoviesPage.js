@@ -10,7 +10,7 @@ import {getAllMovies} from "../../store";
 const useStyles = makeStyles((theme) => ({
     container: {
         paddingTop: theme.spacing(10),
-        [theme.breakpoints.down("sm")]:{
+        [theme.breakpoints.down("sm")]: {
             paddingTop: theme.spacing(15)
         }
     }
@@ -22,15 +22,14 @@ const MoviesPage = () => {
     const {movies} = useSelector(state => state['moviesReducer']);
     const dispatch = useDispatch();
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getAllMovies())
-    },[dispatch])
+    }, [dispatch])
 
     return (
         <Container>
             <Grid container spacing={3} className={classes.container}>
-                {/*{movies.results && movies.results.map((movie) => <Grid item sm={6} md={3} xs={12}>{movie.original_title}</Grid>)}*/}
-                {movies.results && movies.results.map((movie) => <Movie key={movie.id} movie={movie} />)}
+                {movies.results && movies.results.map((movie) => <Movie key={movie.id} movie={movie}/>)}
             </Grid>
         </Container>
     );
