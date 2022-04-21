@@ -7,8 +7,6 @@ import {Outlet} from "react-router-dom";
 import {getAllGenres} from "../../store";
 import Genre from "../../components/Genre/Genre";
 
-
-
 const useStyles = makeStyles((theme) => ({
     container: {
         paddingTop: theme.spacing(10),
@@ -37,7 +35,11 @@ const GenresListPage = () => {
             <Grid item>
                 {genresList.genres && genresList.genres.map(value=> <Genre key={value.id} genre={value}/>)}
             </Grid>
-            <Outlet/>
+            <Grid item>
+                <Outlet/>
+                123
+            </Grid>
+
         </Grid>
     );
 };

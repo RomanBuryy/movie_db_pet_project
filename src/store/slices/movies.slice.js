@@ -49,10 +49,6 @@ export const getAllMoviesWithGenre = createAsyncThunk(
     }
 )
 
-
-
-
-
 const moviesSlice = createSlice({
     name: 'moviesSlice',
     initialState: {
@@ -86,8 +82,9 @@ const moviesSlice = createSlice({
 
         [getAllMoviesWithGenre.fulfilled]: (state, action) => {
             state.status = 'fulfilled'
-            state.movies = action.payload.results
-        }
+            state.movies = action.payload
+        },
+
     }
 });
 
