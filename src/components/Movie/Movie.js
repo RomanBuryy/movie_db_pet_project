@@ -24,12 +24,13 @@ const Movie = ({movie}) => {
     const classes = useStyles();
 
     return (
-        <Grid item sm={5} md={4} xl={3} xs={12}>
+         <Grid item sm={5} md={4} xl={3} xs={12}>
             <Link to={movie.id.toString()} className={classes.cardLink}>
             <Card sx={{
                 color: 'white',
                 background: 'linear-gradient(to right bottom, #00d2ff, #3a7bd5)',
                 boxShadow: 2,
+
             }}>
                 <CardActionArea>
                     <CardMedia
@@ -49,6 +50,7 @@ const Movie = ({movie}) => {
             </Card>
             </Link>
         </Grid>
+
     );
 };
 

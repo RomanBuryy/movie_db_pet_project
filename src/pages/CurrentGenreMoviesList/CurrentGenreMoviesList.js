@@ -21,10 +21,10 @@ const CurrentGenreMoviesList = () => {
 
     return (
 
-            <div>
+            <>
                 {movies.results && movies.results.map((movie) => <Movie key={movie.id} movie={movie}/>)}
 
-            </div>
+            </>
 
 
     );
