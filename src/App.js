@@ -12,18 +12,18 @@ function App() {
 
     return (
         <>
-           <Routes>
-               <Route path={'/'} element={<Layout/>}>
-                   <Route index element={<Navigate to={'movies'}/>} />
-                   <Route path={'movies'} element={<MoviesPage/>} />
-                   <Route path={'/movies/:id'} element={<SingleMoviePage/>} />
-                   <Route path={'genres'} element={<GenresListPage/>}>
-                       <Route path={':id'} element={<CurrentGenreMoviesList/>}>
-                           <Route path={':id'} element={<SingleMoviePage/>} />
-                       </Route>
-                   </Route>
-               </Route>
-           </Routes>
+            <Routes>
+                <Route path={'/'} element={<Layout/>}>
+                    <Route index element={<Navigate to={'movies'}/>}/>
+                    <Route path={'movies'} element={<MoviesPage/>}/>
+                    <Route path={'/movies/:id'} element={<SingleMoviePage/>}/>
+                    <Route path={'genres'} element={<GenresListPage/>}>
+                        <Route path={':id'} element={<CurrentGenreMoviesList/>}>
+                            <Route path={':id'} element={<SingleMoviePage/>}/>
+                        </Route>
+                    </Route>
+                </Route>
+            </Routes>
         </>
     );
 }
