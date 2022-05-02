@@ -8,12 +8,12 @@ import {getAllMovies} from "../../store";
 
 
 const useStyles = makeStyles((theme) => ({
-    container: {
-        paddingTop: theme.spacing(10),
-        [theme.breakpoints.down("sm")]: {
-            paddingTop: theme.spacing(15)
-        }
-    }
+    // container: {
+    //     paddingTop: theme.spacing(10),
+    //     [theme.breakpoints.down("sm")]: {
+    //         paddingTop: theme.spacing(15)
+    //     }
+    // }
 }));
 
 const MoviesPage = () => {

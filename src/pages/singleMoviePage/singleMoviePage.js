@@ -8,13 +8,13 @@ import {getMovieDetails} from "../../store";
 
 
 const useStyles = makeStyles((theme) => ({
-    container: {
-        paddingTop: theme.spacing(10),
-        [theme.breakpoints.down("sm")]: {
-            paddingTop: theme.spacing(15)
-
-        }
-    },
+    // container: {
+    //     paddingTop: theme.spacing(10),
+    //     [theme.breakpoints.down("sm")]: {
+    //         paddingTop: theme.spacing(15)
+    //
+    //     }
+    // },
     card:{
         display: "flex",
         background: "linear-gradient(135deg, #00d2ff, #3a7bd5)",
@@ -43,6 +43,8 @@ const SingleMoviePage = () => {
     const params = useParams();
     const dispatch = useDispatch();
     const {singleMovie} = useSelector(state => state['moviesReducer']);
+
+
 
     useEffect(() => {
         dispatch(getMovieDetails(params.id));

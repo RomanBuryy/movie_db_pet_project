@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {Outlet, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllMoviesWithGenre} from "../../store";
 import Movie from "../../components/Movie/Movie";
@@ -23,6 +23,7 @@ const CurrentGenreMoviesList = () => {
 
             <>
                 {movies.results && movies.results.map((movie) => <Movie key={movie.id} movie={movie}/>)}
+                <Outlet/>
 
             </>
 

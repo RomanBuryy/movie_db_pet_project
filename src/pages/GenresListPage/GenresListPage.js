@@ -8,13 +8,15 @@ import {getAllGenres} from "../../store";
 import Genre from "../../components/Genre/Genre";
 
 const useStyles = makeStyles((theme) => ({
-    container: {
-        paddingTop: theme.spacing(10),
-        [theme.breakpoints.down("sm")]: {
-            paddingTop: theme.spacing(15)
-        },
+    // container: {
+    //     paddingTop: theme.spacing(10),
+    //     [theme.breakpoints.down("sm")]: {
+    //         paddingTop: theme.spacing(15)
+    //     },
+    //
+    // },
 
-    }
+
 }));
 
 const GenresListPage = () => {
@@ -29,7 +31,7 @@ const GenresListPage = () => {
 
     return (
         <Container>
-            <Grid container className={classes.container} spacing={3}>
+            <Grid container className={classes.container}  spacing={3}>
                 <Grid item md={2}>
                     {genresList.genres && genresList.genres.map(value => <Genre key={value.id} genre={value}/>)}
                 </Grid>
